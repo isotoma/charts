@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  socat-tunneller:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-12-21T16:00:19.246080098Z"
+    deprecated: true
+    description: A Helm chart for socat-tunneller
+    digest: d16de8b44f4e55e35e53d7139110fcb4b50667d99a01ee21d3af4ecb4b344cd8
+    home: http://www.dest-unreach.org/socat/
+    name: socat-tunneller
+    urls:
+    - https://github.com/isotoma/charts/releases/download/socat-tunneller-0.1.2/socat-tunneller-0.1.2.tgz
+    version: 0.1.2
+generated: "2020-12-21T16:00:19.126336773Z"
