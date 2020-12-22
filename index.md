@@ -1,6 +1,6 @@
 # Isotoma Public Helm Charts
 
-https://isotoma.github.io/charts/
+[https://isotoma.github.io/charts/](https://isotoma.github.io/charts/)
 
 ## Usage
 
@@ -19,4 +19,4 @@ repositories:
 
 ## Source
 
-The source for these charts is hosted at https://github.com/isotoma/charts/
+The source for these charts is hosted at [https://github.com/isotoma/charts/](https://github.com/isotoma/charts/)
