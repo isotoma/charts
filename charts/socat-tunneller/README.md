@@ -41,7 +41,7 @@ mysql -u myuser -h 127.0.0.1 --port 13306 -p
 | ---------          | -----------                    | -------        |
 | `replicaCount`     | Deployment replicas            | 1              |
 | `image.repository` | Image repository               | `alpine/socat` |
-| `image.tag`        | Image tag                      | `1.0.3`        |
+| `image.tag`        | Image tag                      | `1.0.5`        |
 | `image.pullPolicy` | Image pull policy              | `IfNotPresent` |
 | `resources`        | Container resources            | `{}`           |
 | `nodeSelector`     | Pod node selector              | `{}`           |
