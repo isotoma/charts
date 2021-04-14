@@ -25,6 +25,7 @@ spec:
     - 'configMap'
     - 'secret'
     - 'nfs'
+    - 'projected'
   runAsUser:
     rule: 'RunAsAny'    
   seLinux:
