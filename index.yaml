@@ -16,6 +16,22 @@ entries:
   efs-provisioner:
   - apiVersion: v1
     appVersion: v2.4.0
+    created: "2022-07-01T22:57:45.162879364Z"
+    description: A Helm chart for the AWS EFS external storage provisioner
+    digest: 75c76edb09fccee90225f62121f9890bb3908c4e379f0e8229f1d8d73e74fa99
+    home: https://github.com/kubernetes-incubator/external-storage/tree/master/aws/efs
+    maintainers:
+    - email: andrew.plummer@isotoma.com
+      name: plumdog
+    name: efs-provisioner
+    sources:
+    - https://github.com/kubernetes-incubator/external-storage/tree/master/aws/efs
+    - https://github.com/mirror/busybox
+    urls:
+    - https://github.com/isotoma/charts/releases/download/efs-provisioner-0.14.0/efs-provisioner-0.14.0.tgz
+    version: 0.14.0
+  - apiVersion: v1
+    appVersion: v2.4.0
     created: "2021-04-14T10:32:32.183439773Z"
     description: A Helm chart for the AWS EFS external storage provisioner
     digest: 72f32f46a55029f4581ce666d9f12290358b2b1772db9f4ab8ea4f80afb8e754
