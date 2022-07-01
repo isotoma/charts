@@ -37,3 +37,26 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+StorageClass apiVersion
+*/}}
+{{- define "efs-provisioner.storageClassApiVersion" -}}
+{{- with .Values.efsProvisioner.storageClass }}
+{{- /* use an explicit version if set */ -}}
+{{- if .apiVersion -}}
+  {{- .apiVersion -}}
+{{- else -}}
+  {{- /* otherwise, check the candidate versions, and pick the first match found, starting from the top or the bottom of the list, depending on apiVersionPolicy.newestAvailable */ -}}
+  {{- $matchingApiVersion := "" -}}
+  {{- range $candidateApiVersion := (.apiVersionPolicy.newestAvailable | ternary (reverse .apiVersionPolicy.candidateApiVersions) .apiVersionPolicy.candidateApiVersions) -}}
+    {{- if not $matchingApiVersion }}
+      {{- if $.Capabilities.APIVersions.Has (printf "%s/StorageClass" $candidateApiVersion) -}}
+        {{- $matchingApiVersion = $candidateApiVersion -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $matchingApiVersion -}}
+  {{- end -}}
+{{- end -}}
+{{- end -}}
