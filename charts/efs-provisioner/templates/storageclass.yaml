@@ -1,5 +1,5 @@
 kind: StorageClass
-apiVersion: storage.k8s.io/v1beta1
+apiVersion: {{ (include "efs-provisioner.storageClassApiVersion" .) | required "Unable to determine apiVersion for StorageClass and none explicitly set." }}
 metadata:
   name: {{ .Values.efsProvisioner.storageClass.name }}
   labels:
