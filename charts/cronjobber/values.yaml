@@ -13,19 +13,13 @@ image:
   repository: quay.io/hiddeco/cronjobber
   tag: 0.3.0
 replicas: 1
-resources:
-  requests:
-    cpu: 50m
-    memory: 64Mi
+resources: {}
 sidecar:
   enabled: false
   image:
     repository: quay.io/hiddeco/cronjobber-updatetz
     tag: 0.1.1
-  resources:
-    requests:
-      cpu: 100m
-      memory: 64Mi
+  resources: {}
   # NB: the security context configuration below may not work
   # out of the box on OpenShift
   securityContext:
@@ -38,7 +32,7 @@ nodeSelector: {}
 rbac:
   apiVersion: null
   apiVersionPolicy:
-    newestAvailable: false
+    newestAvailable: true
     candidateApiVersions:
       - rbac.authorization.k8s.io/v1beta1
       - rbac.authorization.k8s.io/v1
@@ -46,7 +40,7 @@ rbac:
 crd:
   apiVersion: null
   apiVersionPolicy:
-    newestAvailable: false
+    newestAvailable: true
     candidateApiVersions:
       - apiextensions.k8s.io/v1beta1
       - apiextensions.k8s.io/v1
