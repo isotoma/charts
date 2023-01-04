@@ -32,6 +32,12 @@ The following table lists the configurable parameters of the cronjobber chart an
 | `sidecar.image.tag`     | Sidecar and init container image tag  | `0.1.1`                                                    |
 | `sidecar.resources.requests.cpu`| Sidecar and init container cpu request | `100m`                                            |
 | `sidecar.resources.requests.memory`| Sidecar and init container memory request | `64Mi`                                      |
+| `rbac.apiVersion`                            | Specify an API version for RBAC resources     |                                                                     |
+| `rbac.apiVersionPolicy.newestAvailable`      | Use the newest candidate version available    | `false`                                                             |
+| `rbac.apiVersionPolicy.candidateApiVersions` | List of API versions to check for, old to new | `rbac.authorization.k8s.io/v1beta1`, `rbac.authorization.k8s.io/v1` |
+| `crd.apiVersion`                             | Specify an API version for the CRD resource   |                                                                     |
+| `crd.apiVersionPolicy.newestAvailable`       | Use the newest candidate version available    | `false`                                                             |
+| `crd.apiVersionPolicy.candidateApiVersions`  | List of API versions to check for, old to new | `apiextensions.k8s.io/v1beta1`, `apiextensions.k8s.io/v1`           |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.

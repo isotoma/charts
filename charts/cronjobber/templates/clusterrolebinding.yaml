@@ -1,5 +1,5 @@
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: {{ (include "cronjobber.rbacApiVersion" .) | required "Unable to determine RBAC apiVersion for ClusterRoleBinding and none explicitly set." }}
 kind: ClusterRoleBinding
 metadata:
   name: {{ .Values.name }}
