@@ -3,6 +3,19 @@ entries:
   cronjobber:
   - apiVersion: v1
     appVersion: 0.3.0
+    created: "2023-01-04T15:30:03.561394062Z"
+    description: Cronjobber is the cronjob controller from Kubernetes patched with time zone support.
+    digest: 38eefe7bd2c790fabc10dc0e43fb07293685870c727967bb1589fe0ea02f24da
+    home: https://github.com/hiddeco/cronjobber
+    maintainers:
+    - email: andrew.plummer@isotoma.com
+      name: plumdog
+    name: cronjobber
+    urls:
+    - https://github.com/isotoma/charts/releases/download/cronjobber-0.3.0/cronjobber-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v1
+    appVersion: 0.3.0
     created: "2023-01-04T15:16:32.318586668Z"
     description: Cronjobber is the cronjob controller from Kubernetes patched with time zone support.
     digest: c9a695f42f9139b9cee108ce6cde7344203706a2c8fa56d246f768dfa4f436f3
