@@ -1,5 +1,14 @@
-name: cronjobber
-namespace: default
+nameOverride: ''
+fullnameOverride: ''
+
+serviceAccount:
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ''
+
 image:
   repository: quay.io/hiddeco/cronjobber
   tag: 0.3.0
@@ -10,7 +19,6 @@ resources:
     memory: 64Mi
 sidecar:
   enabled: false
-  name: init-updatetz
   image:
     repository: quay.io/hiddeco/cronjobber-updatetz
     tag: 0.1.1

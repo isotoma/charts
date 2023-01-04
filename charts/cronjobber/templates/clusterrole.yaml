@@ -2,9 +2,9 @@
 apiVersion: {{ (include "cronjobber.rbacApiVersion" .) | required "Unable to determine RBAC apiVersion for ClusterRole and none explicitly set." }}
 kind: ClusterRole
 metadata:
-  name: {{ .Values.name }}
+  name: {{ include "cronjobber.fullname" . }}
   labels:
-    name: {{ .Values.name }}
+    {{- include "cronjobber.labels" . | nindent 4 }}
 rules:
   - apiGroups: ['cronjobber.hidde.co']
     resources: ['*']
