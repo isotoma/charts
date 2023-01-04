@@ -2,21 +2,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
-  namespace: {{ .Values.namespace }}
+  name: {{ include "cronjobber.fullname" . }}-controller
+  labels:
+    {{- include "cronjobber.labels" . | nindent 4 }}
+    component: controller
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      name: {{ .Values.name }}
+      {{- include "cronjobber.selectorLabels" . | nindent 6 }}
+      component: controller
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        name: {{ .Values.name }}
+        {{- include "cronjobber.selectorLabels" . | nindent 8 }}
+        component: controller
     spec:
-      serviceAccountName: {{ .Values.name }}
+      serviceAccountName: {{ include "cronjobber.serviceAccountName" . }}
       securityContext:
         fsGroup: 2 #daemon
       {{- if .Values.sidecar.enabled }}
@@ -45,7 +49,7 @@ spec:
               value: "3s"
       {{- end }}
       containers:
-        - name: {{ .Values.name }}
+        - name: cronjobber
           image: {{ printf "%s:%s" .Values.image.repository .Values.image.tag | quote }}
           resources:
             requests:

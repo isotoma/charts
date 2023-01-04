@@ -1,54 +1,34 @@
 # Cronjobber Helm Chart
 
-## Chart Details
-This chart will do the following:
+Built on https://github.com/hiddeco/cronjobber/tree/master/chart
 
-* Installing `Cronjobber` which is the cronjob controller from Kubernetes patched with time zone support.
-
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```bash
-$ helm install my-release chart/
-```
+Cronjobber is the cronjob controller from Kubernetes patched with time zone support.
 
 ## Configuration
 
 The following table lists the configurable parameters of the cronjobber chart and their default values.
 
-| Parameter               | Description                           | Default                                                    |
-| ----------------------- | ----------------------------------    | ---------------------------------------------------------- |
-| `name`                  | Name of the resources                 | `cronjobber`                                               |
-| `namespace`             | Namespace to deploy the resources     | `default`                                                  |
-| `image.repository`      | Container image name                  | `quay.io/hiddeco/cronjobber`                               |
-| `image.tag`             | Container image tag                   | `0.3.0`                                                    |
-| `replicas`              | Number of replicas                    | `1`                                                        |
-| `resources.requests.cpu`| CPU request for the main container    | `50m`                                                      |
-| `resources.requests.memory`| Memory request for the main container | `64Mi`                                                  |
-| `sidecar.enabled`       | Sidecar to keep the timezone database up-to-date | `False`                                         |
-| `sidecar.name`          | Init container name                   | `init-updatetz`                                            |
-| `sidecar.image.repository`| Sidecar and init container image name | `quay.io/hiddeco/cronjobber-updatetz`                    |
-| `sidecar.image.tag`     | Sidecar and init container image tag  | `0.1.1`                                                    |
-| `sidecar.resources.requests.cpu`| Sidecar and init container cpu request | `100m`                                            |
-| `sidecar.resources.requests.memory`| Sidecar and init container memory request | `64Mi`                                      |
-| `rbac.apiVersion`                            | Specify an API version for RBAC resources     |                                                                     |
-| `rbac.apiVersionPolicy.newestAvailable`      | Use the newest candidate version available    | `false`                                                             |
-| `rbac.apiVersionPolicy.candidateApiVersions` | List of API versions to check for, old to new | `rbac.authorization.k8s.io/v1beta1`, `rbac.authorization.k8s.io/v1` |
-| `crd.apiVersion`                             | Specify an API version for the CRD resource   |                                                                     |
-| `crd.apiVersionPolicy.newestAvailable`       | Use the newest candidate version available    | `false`                                                             |
-| `crd.apiVersionPolicy.candidateApiVersions`  | List of API versions to check for, old to new | `apiextensions.k8s.io/v1beta1`, `apiextensions.k8s.io/v1`           |
-
-
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
-
-Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
-
-```bash
-$ helm install --name my-release -f values.yaml chart
-```
-
-> **Tip**: You can use the default [values.yaml](values.yaml)
+| Parameter                                    | Description                                      | Default                                                             |
+|----------------------------------------------|--------------------------------------------------|---------------------------------------------------------------------|
+| `nameOverride`                               |                                                  |                                                                     |
+| `fullnameOverride`                           |                                                  |                                                                     |
+| `serviceAccount.annotations`                 |                                                  | `{}`                                                                |
+| `image.repository`                           | Container image name                             | `quay.io/hiddeco/cronjobber`                                        |
+| `image.tag`                                  | Container image tag                              | `0.3.0`                                                             |
+| `replicas`                                   | Number of replicas                               | `1`                                                                 |
+| `resources.requests.cpu`                     | CPU request for the main container               | `50m`                                                               |
+| `resources.requests.memory`                  | Memory request for the main container            | `64Mi`                                                              |
+| `sidecar.enabled`                            | Sidecar to keep the timezone database up-to-date | `False`                                                             |
+| `sidecar.image.repository`                   | Sidecar and init container image name            | `quay.io/hiddeco/cronjobber-updatetz`                               |
+| `sidecar.image.tag`                          | Sidecar and init container image tag             | `0.1.1`                                                             |
+| `sidecar.resources.requests.cpu`             | Sidecar and init container cpu request           | `100m`                                                              |
+| `sidecar.resources.requests.memory`          | Sidecar and init container memory request        | `64Mi`                                                              |
+| `rbac.apiVersion`                            | Specify an API version for RBAC resources        |                                                                     |
+| `rbac.apiVersionPolicy.newestAvailable`      | Use the newest candidate version available       | `false`                                                             |
+| `rbac.apiVersionPolicy.candidateApiVersions` | List of API versions to check for, old to new    | `rbac.authorization.k8s.io/v1beta1`, `rbac.authorization.k8s.io/v1` |
+| `crd.apiVersion`                             | Specify an API version for the CRD resource      |                                                                     |
+| `crd.apiVersionPolicy.newestAvailable`       | Use the newest candidate version available       | `false`                                                             |
+| `crd.apiVersionPolicy.candidateApiVersions`  | List of API versions to check for, old to new    | `apiextensions.k8s.io/v1beta1`, `apiextensions.k8s.io/v1`           |
 
 ## Usage
 

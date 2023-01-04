@@ -2,14 +2,14 @@
 apiVersion: {{ (include "cronjobber.rbacApiVersion" .) | required "Unable to determine RBAC apiVersion for ClusterRoleBinding and none explicitly set." }}
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.name }}
+  name: {{ include "cronjobber.fullname" . }}
   labels:
-    name: {{ .Values.name }}
+    {{- include "cronjobber.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.name }}
+  name: {{ include "cronjobber.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ .Values.name }}
-    namespace: {{ .Values.namespace }}
+    name: {{ include "cronjobber.serviceAccountName" . }}
+    namespace: {{ $.Release.Namespace }}
