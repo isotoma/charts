@@ -16,18 +16,16 @@ The following table lists the configurable parameters of the cronjobber chart an
 | `image.repository`                           | Container image name                             | `quay.io/hiddeco/cronjobber`                                        |
 | `image.tag`                                  | Container image tag                              | `0.3.0`                                                             |
 | `replicas`                                   | Number of replicas                               | `1`                                                                 |
-| `resources.requests.cpu`                     | CPU request for the main container               | `50m`                                                               |
-| `resources.requests.memory`                  | Memory request for the main container            | `64Mi`                                                              |
+| `resources`                                  | Resources for the main container                 | `{}`                                                                |
 | `sidecar.enabled`                            | Sidecar to keep the timezone database up-to-date | `False`                                                             |
 | `sidecar.image.repository`                   | Sidecar and init container image name            | `quay.io/hiddeco/cronjobber-updatetz`                               |
 | `sidecar.image.tag`                          | Sidecar and init container image tag             | `0.1.1`                                                             |
-| `sidecar.resources.requests.cpu`             | Sidecar and init container cpu request           | `100m`                                                              |
-| `sidecar.resources.requests.memory`          | Sidecar and init container memory request        | `64Mi`                                                              |
+| `sidecar.resources`                          | Sidecar and init container resources             | `{}`                                                                |
 | `rbac.apiVersion`                            | Specify an API version for RBAC resources        |                                                                     |
-| `rbac.apiVersionPolicy.newestAvailable`      | Use the newest candidate version available       | `false`                                                             |
+| `rbac.apiVersionPolicy.newestAvailable`      | Use the newest candidate version available       | `true`                                                              |
 | `rbac.apiVersionPolicy.candidateApiVersions` | List of API versions to check for, old to new    | `rbac.authorization.k8s.io/v1beta1`, `rbac.authorization.k8s.io/v1` |
 | `crd.apiVersion`                             | Specify an API version for the CRD resource      |                                                                     |
-| `crd.apiVersionPolicy.newestAvailable`       | Use the newest candidate version available       | `false`                                                             |
+| `crd.apiVersionPolicy.newestAvailable`       | Use the newest candidate version available       | `true`                                                              |
 | `crd.apiVersionPolicy.candidateApiVersions`  | List of API versions to check for, old to new    | `apiextensions.k8s.io/v1beta1`, `apiextensions.k8s.io/v1`           |
 
 ## Usage

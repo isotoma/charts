@@ -34,10 +34,7 @@ spec:
           image: {{ printf "%s:%s" .Values.sidecar.image.repository .Values.sidecar.image.tag | quote }}
           securityContext:
 {{ toYaml .Values.sidecar.securityContext | indent 12 }}
-          resources:
-            limits:
-              cpu: {{ .Values.sidecar.resources.requests.cpu }}
-              memory: {{ .Values.sidecar.resources.requests.memory }}
+          resources: {{- .Values.sidecar.resources | toYaml | nindent 12 }}
           volumeMounts:
             - name: timezonedb
               mountPath: /tmp/zoneinfo
@@ -51,10 +48,7 @@ spec:
       containers:
         - name: cronjobber
           image: {{ printf "%s:%s" .Values.image.repository .Values.image.tag | quote }}
-          resources:
-            requests:
-              cpu: {{ .Values.resources.requests.cpu }}
-              memory: {{ .Values.resources.requests.memory }}
+          resources: {{- .Values.resources | toYaml | nindent 12 }}
           args:
             - --log-level=info
           {{- if .Values.sidecar.enabled }}
@@ -70,10 +64,7 @@ spec:
           # out of the box on OpenShift
           securityContext:
 {{ toYaml .Values.sidecar.securityContext | indent 12 }}
-          resources:
-            limits:
-              cpu: {{ .Values.sidecar.resources.requests.cpu }}
-              memory: {{ .Values.sidecar.resources.requests.memory }}
+          resources: {{- .Values.sidecar.resources | toYaml | nindent 12 }}
           volumeMounts:
             - name: timezonedb
               mountPath: /tmp/zoneinfo
