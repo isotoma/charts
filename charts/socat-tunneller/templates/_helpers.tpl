@@ -30,3 +30,14 @@ Create chart name and version as used by the chart label.
 {{- define "tunneller.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+Define local port to bind.
+*/}}
+{{- define "tunneller.localPort" -}}
+{{- if .Values.tunnel.localPort -}}
+{{- .Values.tunnel.localPort -}}
+{{- else -}}
+{{- .Values.tunnel.port -}}
+{{- end -}}
+{{- end -}}
