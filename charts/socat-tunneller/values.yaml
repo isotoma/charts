@@ -24,4 +24,4 @@ podAnnotations: {}
 tunnel:
   host: myhost
   port: 9999
-  localPort: 9999
+  localPort: null
