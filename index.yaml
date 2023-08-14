@@ -115,6 +115,19 @@ entries:
   socat-tunneller:
   - apiVersion: v1
     appVersion: "1.0"
+    created: "2023-08-14T14:31:13.7279128Z"
+    description: A Helm chart for socat-tunneller
+    digest: 7c025aeba885213f9d889d62bb696a087df6ac0d52a499a328e506accce68756
+    home: http://www.dest-unreach.org/socat/
+    maintainers:
+    - email: andrew.plummer@isotoma.com
+      name: plumdog
+    name: socat-tunneller
+    urls:
+    - https://github.com/isotoma/charts/releases/download/socat-tunneller-0.2.0/socat-tunneller-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v1
+    appVersion: "1.0"
     created: "2020-12-22T10:02:26.628173791Z"
     description: A Helm chart for socat-tunneller
     digest: c4aca860b142f3f921a9367701fb0987baa287d54a286d2fd681bca2ed72f1bf
