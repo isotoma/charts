@@ -30,16 +30,18 @@ spec:
           command:
             - socat
           args:
-            - "TCP-LISTEN:$(TUNNEL_PORT),fork"
+            - "TCP-LISTEN:$(TUNNEL_LOCAL_PORT),fork"
             - "TCP:$(TUNNEL_HOST):$(TUNNEL_PORT)"
           env:
+            - name: TUNNEL_LOCAL_PORT
+              value: {{ include "tunneller.localPort" . | quote }}
             - name: TUNNEL_HOST
               value: {{ required "Must specify a target host for the tunnel." .Values.tunnel.host | quote }}
             - name: TUNNEL_PORT
               value: {{ required "Must specify a target port for the tunnel." .Values.tunnel.port | quote }}
           ports:
             - name: tunnel-port
-              containerPort: {{ (int64 .Values.tunnel.port) }}
+              containerPort: {{ include "tunneller.localPort" . }}
               protocol: TCP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
