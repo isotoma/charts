@@ -23,6 +23,8 @@ spec:
 {{ toYaml . | indent 8 }}
 {{- end }}
     spec:
+      securityContext:
+{{ toYaml .Values.podSecurityContext | indent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -43,8 +45,12 @@ spec:
             - name: tunnel-port
               containerPort: {{ include "tunneller.localPort" . }}
               protocol: TCP
+          securityContext:
+{{ toYaml .Values.securityContext | indent 12 }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          volumeMounts:
+{{ toYaml .Values.volumeMounts | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
@@ -57,3 +63,5 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      volumes:
+{{ toYaml .Values.volumes | indent 8 }}
